@@ -1,0 +1,172 @@
+Exercice 1
+    Question 1.
+        Les fleche directionnelle ne fonctionne pas juste avec ocaml.
+    
+    Question 2.
+        Avec la commande rlwrap ocaml, les flèches directionnelle deviennent fonctionnelle
+    Question 3.
+        2 -- int 
+
+        2.0 -- float 
+
+        2,0 -- int * int 
+
+        2;0 -- erreur d'expression : c'est une séquence (la première ; et il donne que le type de première entier qui est avant la ;) 
+
+        (2, 0) -- int * int 
+
+        (2; 0) -- erreur d'expression : une séqeunce
+
+        a -- unbound value : valeur non affecter
+
+        'a' -- char
+
+        "a" -- string
+
+        true -- bool
+
+        () -- unit = ()
+
+        [] -- 'a list
+
+        [1] -- int list
+
+        [1, true] -- (int * bool) list (list d'un entier et d'un boolean)
+
+        [1; true] --This expression has type bool but an expression was expected of type int 
+           
+	Qestion 4.
+		# (5,6.4);;
+		- : int * float = (5, 6.4)
+
+		la b c'est impossible ;
+
+		# ["AA"];;
+		- : string list = ["AA"]
+
+		# [true],"zz" ;;        
+		- : bool list * string = ([true], "zz")
+
+		la e jai pas trouvé
+
+		# [[333]];;
+		- : int list list = [[333]]
+
+		Qestion 5
+		# 1 + 5;;
+		int = 6
+
+		# 1.1 + 2.2 ;; ona des oparateur speciale pour les float +.
+		Error: This expression has type float but an expression was expected of type
+	 	//correction # 1.1 +. 2.2 ;;
+		# 5 + 3.3 ;;
+		Error: This expression has type float but an expression was expected of type int
+		//on peux pas additionner deux type deffirent
+		# 2/3 ;;
+		- : int = 0
+		# 7 mod 2 ;;
+		- : int = 1
+		# 11 mod 12 ;;
+		- : int = 11
+		#'a' = 'b' ;;
+		: bool = false
+
+		# 2 = 3;;
+		 : bool = false
+		# "a" = 'a' ;; 
+		Error: This expression has type char but an expression was expected of type
+         string
+         //on peeut pas comparé deux type different.
+
+		# not 1 = 0 ;; 
+		Error: This expression has type int but an expression was expected of type bool
+		# not (1 = 0);;
+		 : bool = true
+
+		Qestion 6
+		 true && true || false;; -- true
+        true && false || true;; -- true
+        true || false && false;; -- true
+        false || true && false;; -- false
+        /* && sont prioritaire que || */
+Exercise 2 :
+	Question 1 :
+	let air  = 
+		let h = 6. and  pi = acos(-1.) and r = 9. in 2.*.pi *.h *.r;;
+	Question2 :
+	let air = 
+	    let r = 2. and pi = acos(-1.) in 
+	        let p = 2. *. pi *. r in 
+	            let d = 2. and h = 3. in 
+	                let a = 2. *. d *. p *. h in 
+	                    let v = d *. h 
+	    in (p, a, v);;
+
+Exercise 3 :
+	Question1 : 
+		# let a = 1 in a+2;;
+	        - : int = 3
+	        # a+3;;  // on peut pas car le a = 1 est une valeur local pour l'expression (let a = 1 in a+2) n'est pas une
+	                                        valeur globale
+	       Error: Unbound value a
+
+	        let b = 5.5;;
+	        rep2: oui on peut 
+
+	        let c = 1;;
+	        let d = c;;
+	        c + d;; 
+	        oui on peut  car le c et d sont des variable globales
+
+	        let e = 1 let f = e;;
+	        oui on peut
+	        
+	        # let e = 1 let f= e;;
+	        val e : int = 1
+	        val f : int = 1 
+
+	        let g = 1 and h = g;;
+	        non on peut pat car on a pas la valeur de g
+
+	        let a = 1 in let b = a;;
+	       	non on peut pas a cause de in
+	        (* let b = let a = 1 in a;; -> version corrigé de ce qu'on veut au dessus*)
+
+	        let a = 1 in let b = a in b;;
+	        oui on peut
+
+    Question2 :
+    	let a = 1;;
+        let a = 1.2 in a;;
+        a;;
+
+        affiche 1
+
+        let a = 1;;
+        val a : int = 1
+        let a = 1.2 in a;;
+        - : float = 1.2
+        a;;
+        - : int = 1
+        
+        let a = 1 in
+            let a = 2 and b = a in
+                a + b;;
+
+        affiche 3 car b prend la valeur de a = 1
+Exercise 4 : 
+	Question 1 : 
+		let min = if a > c then c else a;;
+	Question 2 : 
+		let max = if a > c then a else c;;
+	Question 3 : 
+	 if a mod 2 = 0 then a else "odd";;
+        non ca marche pas car les les expressions apres then et else doivent avoir le meme type 
+        mais dans ce cas la le a est un int et "odd" est un string
+    Question 4 : 
+    	let b = if a<10 then "small" else "large" ;; 
+    Question 5 : 
+    	let 
+    	b= if a = 0 then 0 else a/2 ;;
+    Question 6 :
+   		let min = if a<b then a else b in let res =  if c mod 3 == 0 then( min * min + 1)else min * min in res;;
